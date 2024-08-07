@@ -6,7 +6,7 @@ from moviepy.video.compositing.CompositeVideoClip import CompositeVideoClip
 from moviepy.video.io.VideoFileClip import VideoFileClip
 from moviepy.video.fx import loop, resize
 
-from helpers import cat
+from helpers import cat, upload
 
 
 def main():
@@ -43,6 +43,4 @@ def main():
     video.write_videofile("movie.mp4", codec='libx264',
                           audio_codec='aac')
 
-
-if __name__ == '__main__':
-    main()
+    upload.upload_blob()
