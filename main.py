@@ -15,9 +15,9 @@ def main():
     audioClip = AudioFileClip("audio/Cat Circus - Doug Maxwell.mp3").set_duration(clip.duration)
     audioClip = volumex(audioClip, 0.1)
 
-    gif = cat.get_cat_gif()
-    # gif = 'temp/img.gif'
-    gifClip = VideoFileClip(gif).set_position(('center', 350))
+    #gif = cat.get_cat_gif()
+    gif = 'temp/img.gif'
+    gifClip = VideoFileClip(gif).set_position(('center', 350)).set_duration(clip.duration)
     loopGifClip = loop.loop(gifClip, duration=clip.duration)
     bigGifClip = resize.resize(loopGifClip, (gifClip.w * 2, gifClip.h * 2))
 

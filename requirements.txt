@@ -1,0 +1,5 @@
+moviepy
+transformers
+Pillow==9.5.0
+Flask
+Gunicorn
