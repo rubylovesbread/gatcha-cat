@@ -5,3 +5,4 @@ Flask
 Gunicorn
 google-cloud-storage
 scipy
+torch
