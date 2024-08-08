@@ -6,11 +6,16 @@
 </head>
 <body>
    <h1>Welcome to FlaskBlog</h1>
+   <button>
+       <a href="{{ url_for('create') }}">
+           create
+       </a>
+   </button>
     <video controls width="280">
-      <source src="/static/movie.mp4" type="video/mp4" />
+      <source src="{{ url_for('static', filename=filename) }}" type="video/mp4" />
 
       Download the
-      <a href="/static/movie.mp4" download="/static/movie.mp4">MP4</a>
+      <a href="{{ url_for('static', filename=filename) }}" download="{{ url_for('static', filename=filename) }}">MP4</a>
       video.
     </video>
 </body>
