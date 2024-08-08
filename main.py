@@ -6,22 +6,23 @@ from moviepy.video.compositing.CompositeVideoClip import CompositeVideoClip
 from moviepy.video.io.VideoFileClip import VideoFileClip
 from moviepy.video.fx import loop, resize
 
-from helpers import cat, upload
+from helpers import cat
 
 
 def main():
     COUNTER = 3
+    clip = ColorClip(size=(1080, 1920), color=[255, 255, 255], duration=10)
     fact = cat.get_cat_fact()
 
-    voice = cat.get_fact_audio(fact)
+    '''voice = cat.get_fact_audio(fact)
     voiceClip = AudioFileClip(voice)
-    voiceClip = volumex(voiceClip, 3)
+    voiceClip = volumex(voiceClip, 3)'''
 
     textClip = TextClip(txt=f'Cat Facts #{COUNTER}', font="Amiri-Bold", fontsize=150, color="black").set_duration(
-        voiceClip.duration)
+        clip.duration)
     textClip = textClip.set_position(('center', 100))
 
-    clip = ColorClip(size=(1080, 1920), color=[255, 255, 255], duration=voiceClip.duration)
+
 
     # audioClip = AudioFileClip("audio/Cat Circus - Doug Maxwell.mp3").set_duration(clip.duration)
     # audioClip = volumex(audioClip, 0.1)
@@ -35,18 +36,20 @@ def main():
     y = 350 + bigGifClip.h
 
     factClip = TextClip(txt=fact, font="Amiri-Bold", size=(900, 800), fontsize=75, color="black",
-                        method='caption').set_duration(voiceClip.duration)
+                        method='caption').set_duration(clip.duration)
 
     factClip = factClip.set_position(('center', y))
 
     video = CompositeVideoClip([clip, bigGifClip, textClip, factClip])
-    new_audioclip = CompositeAudioClip([voiceClip])
-    video.audio = new_audioclip
+    #new_audioclip = CompositeAudioClip([voiceClip])
+    #video.audio = new_audioclip
 
     video.write_videofile("static/movie.mp4", codec='libx264',
                           audio_codec='aac')
 
     # upload.upload_blob()
     COUNTER += 1
+
+    return fact
 
 

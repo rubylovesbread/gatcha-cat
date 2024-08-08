@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>FlaskBlog</title>
+    <title>Gatcha Cat Facts</title>
 </head>
 <body>
-   <h1>Welcome to FlaskBlog</h1>
+   <h1>Welcome to Gatcha Cat's Random Fact Machine</h1>
    <button>
        <a href="{{ url_for('create') }}">
            create
@@ -18,5 +18,16 @@
       <a href="{{ url_for('static', filename=filename) }}" download="{{ url_for('static', filename=filename) }}">MP4</a>
       video.
     </video>
+    <h2>
+        {{ fact }}
+    </h2>
+    <div>
+        <button class="btn btn-primary" onClick="copyToClipboard('{{ fact }}')">Copy</button>
+    </div>
 </body>
+<script>
+    function copyToClipboard(fact) {
+        navigator.clipboard.writeText(fact)
+    }
+</script>
 </html>

@@ -1,5 +1,4 @@
 import requests
-from helpers import genaudio
 
 CAT_FACT_URL = 'https://catfact.ninja/fact'
 CAT_GIF_URL = 'https://g.tenor.com/v1/random?q=cat&key=LIVDSRZULELA&limit=1'
@@ -21,8 +20,3 @@ def get_cat_gif():
     f.close()
     return 'temp/img.gif'
 
-
-def get_fact_audio(text):
-    path = genaudio.generate_speech(text)
-    #path = "audio/factAudio.wav"
-    return path
