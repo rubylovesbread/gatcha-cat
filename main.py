@@ -6,12 +6,11 @@ from moviepy.video.compositing.CompositeVideoClip import CompositeVideoClip
 from moviepy.video.io.VideoFileClip import VideoFileClip
 from moviepy.video.fx import loop, resize
 
-from helpers import cat, upload
-
-COUNTER = 3
+from helpers import cat
 
 
 def main():
+    COUNTER = 3
     fact = cat.get_cat_fact()
 
     voice = cat.get_fact_audio(fact)
@@ -44,8 +43,10 @@ def main():
     new_audioclip = CompositeAudioClip([voiceClip])
     video.audio = new_audioclip
 
-    video.write_videofile("movie.mp4", codec='libx264',
+    video.write_videofile("static/movie.mp4", codec='libx264',
                           audio_codec='aac')
 
     # upload.upload_blob()
+    COUNTER += 1
+
 
